@@ -1,3 +1,61 @@
+<?php
+class professor
+{
+    private string $firstName;
+    private string $lastName;
+    private string $subjects;
+    private string $nameSchool;
+
+    public function __construct(string $firstName, string $lastName)
+    {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        // $this->subjects = $subjects;
+        // $this->nameSchool = $nameSchool;
+    }
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    public function getSubjects(): string
+    {
+        return $this->subjects;
+    }
+
+    public function setSubjects(string $subjects): void
+    {
+        $this->subjects = $subjects;
+    }
+    public function getNameSchool(): string
+    {
+        return $this->nameSchool;
+    }
+
+    public function setNameSchool(string $nameSchool): void
+    {
+        $this->nameSchool = $nameSchool;
+    }
+
+}
+$firstProfessor = new professor('Robert', 'Deniro');
+$secondProfessor = new professor('Michelle', 'Pfeiffer');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,23 +82,28 @@
                 </ul>
             </nav>
         </header>
-        
+
         <!-- QUESTION 1 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
             <p class="exercice-txt">
-                Créer une classe permettant de créer des professeurs ayant un nom, un prénom, une liste des matières qu'il enseigne et le nom de l'école où il enseigne.
+                Créer une classe permettant de créer des professeurs ayant un nom, un prénom, une liste des matières
+                qu'il enseigne et le nom de l'école où il enseigne.
                 <br>
-                Définir toutes les propriétés à l'instanciation en rendant la liste des matières et le nom de lécole faculative.
+                Définir toutes les propriétés à l'instanciation en rendant la liste des matières et le nom de lécole
+                faculative.
                 <br>
                 Créer 2 professeurs différents.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+                echo '<p>' . 'les professeurs sont : ' . $firstProfessor->getFirstName() . ' ' . $firstProfessor->getLastName()
+                    . ' et ' . $secondProfessor->getFirstName() . ' ' . $secondProfessor->getLastName() . '</p>';
+                ?>
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 2 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
@@ -52,21 +115,22 @@
                 Afficher les écoles des 2 professeurs.
             </p>
             <div class="exercice-sandbox">
-                
+
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 3 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
             <p class="exercice-txt">
-                Créer les méthodes permettant d'ajouter une matière, de retirer une matière et d'afficher la liste des matières d'un prof.
+                Créer les méthodes permettant d'ajouter une matière, de retirer une matière et d'afficher la liste des
+                matières d'un prof.
                 <br>
                 Tester l'ajout, la suppression et l'affichage sur chacun des profs.
             </p>
             <div class="exercice-sandbox">
-                
+
             </div>
         </section>
 
@@ -81,11 +145,12 @@
                 Afficher la phrase de présentation des 2 profs.
             </p>
             <div class="exercice-sandbox">
-                
+
             </div>
         </section>
 
     </div>
     <div class="copyright">© Guillaume Belleuvre, 2023 - DWWM</div>
 </body>
+
 </html>
