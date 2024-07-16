@@ -1,60 +1,9 @@
 <?php
-class professor
-{
-    private string $firstName;
-    private string $lastName;
-    private string $subjects;
-    private string $nameSchool;
+namespace App\Objects;
 
-    public function __construct(string $firstName, string $lastName)
-    {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        // $this->subjects = $subjects;
-        // $this->nameSchool = $nameSchool;
-    }
-    public function getFirstName(): string
-    {
-        return $this->firstName;
-    }
-    public function setFirstName(string $firstName): void
-    {
-        $this->firstName = $firstName;
-    }
+spl_autoload_register();
 
-    public function getLastName(): string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName(string $lastName): void
-    {
-        $this->lastName = $lastName;
-    }
-
-    public function getSubjects(): string
-    {
-        return $this->subjects;
-    }
-
-    public function setSubjects(string $subjects): void
-    {
-        $this->subjects = $subjects;
-    }
-    public function getNameSchool(): string
-    {
-        return $this->nameSchool;
-    }
-
-    public function setNameSchool(string $nameSchool): void
-    {
-        $this->nameSchool = $nameSchool;
-    }
-
-}
-$firstProfessor = new professor('Robert', 'Deniro');
-$secondProfessor = new professor('Michelle', 'Pfeiffer');
-
+use App\Objects\Teacher;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,8 +46,13 @@ $secondProfessor = new professor('Michelle', 'Pfeiffer');
             </p>
             <div class="exercice-sandbox">
                 <?php
-                echo '<p>' . 'les professeurs sont : ' . $firstProfessor->getFirstName() . ' ' . $firstProfessor->getLastName()
-                    . ' et ' . $secondProfessor->getFirstName() . ' ' . $secondProfessor->getLastName() . '</p>';
+                $teacher1 = new Teacher('Dupond', 'Jean', ['Mathématiques', 'Physiques'], 'Lycée Louis Legrand');
+                $teacher2 = new Teacher('Martin', 'Sophie', ['Français', 'Littérature'], 'Collège Jean-Moulin');
+
+                $teacher3 = new Teacher('Duchemin', 'Jacques');
+
+                var_dump($teacher1, $teacher2, $teacher3);
+
                 ?>
             </div>
         </section>
@@ -115,7 +69,13 @@ $secondProfessor = new professor('Michelle', 'Pfeiffer');
                 Afficher les écoles des 2 professeurs.
             </p>
             <div class="exercice-sandbox">
+                <?php
+                $teacher1->setSchool('Lycée de Ste Marie');
+                $teacher2->setSchool('Ecole de Poudlard');
 
+                echo '<p>' . $teacher1->getSchool() . '</p>'
+                    . '<p>' . $teacher2->getSchool() . '</p>';
+                ?>
             </div>
         </section>
 
@@ -130,7 +90,14 @@ $secondProfessor = new professor('Michelle', 'Pfeiffer');
                 Tester l'ajout, la suppression et l'affichage sur chacun des profs.
             </p>
             <div class="exercice-sandbox">
+                <?php
+                $teacher1->addDiscipline('Sorcellerie');
+                $teacher1->deleteDiscipline('truc');
+                $teacher1->deleteDiscipline('Mathématiques');
 
+                echo '<p>' . $teacher1->showDisciplines() . '</p>';
+                echo '<p>' . $teacher2->showDisciplines() . '</p>';
+                ?>
             </div>
         </section>
 
@@ -145,7 +112,10 @@ $secondProfessor = new professor('Michelle', 'Pfeiffer');
                 Afficher la phrase de présentation des 2 profs.
             </p>
             <div class="exercice-sandbox">
-
+                <?php
+                echo "<p>" . $teacher1->introduceMySelf() . "</p>";
+                echo "<p>" . $teacher2->introduceMySelf() . "</p>";
+                ?>
             </div>
         </section>
 

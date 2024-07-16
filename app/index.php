@@ -1,14 +1,14 @@
-<?php 
-require_once 'include/_student.php';
+<?php
+// require_once "./App/Objects/Student.php";
 
-$firstStudent = new Student('Billy', 'LeKid', 18, 'CM2', '2002-11-01', 'ecoleRouge');
+// namespace App\Objects;
 
-$secondStudent = new Student('Johny', 'Dallas', 19, 'CM1', '2004-09-10', 'ecoleBlue');
+spl_autoload_register();
 
-$firstStudent->setAge($firstStudent->calculateAge());
-$secondStudent->setAge($secondStudent->calculateAge());
-
+use App\Objects\Student;
+use DateTime;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,14 +48,17 @@ $secondStudent->setAge($secondStudent->calculateAge());
             </p>
             <div class="exercice-sandbox">
                 <?php
-                echo '<p>' . $firstStudent->getFirstName() . ' ' . $firstStudent->getLastName() . ' est agé de '
-                    . $firstStudent->getAge() . ' ans, et il est en classe de ' . $secondStudent->getLevel() . '.</p>';
-                echo '<p>' . $secondStudent->getFirstName() . ' ' . $secondStudent->getLastName() . ' est agé de '
-                    . $secondStudent->getAge() . ' ans, et il est en classe de ' . $firstStudent->getLevel() . '.</p>';
+                $stud1Birthdate = new DateTime("1973-6-10");
+                $stud2Birthdate = new DateTime("1990/4/5");
+                $student1 = new Student('Molotov', 'Zangief',  $stud1Birthdate, "CP", "Jules Vernes");
+                $student2 = new Student('Jones', 'Guile', $stud2Birthdate, "Moyenne Section", "Rostand");
 
+                var_dump($student1);
+                var_dump($student2);
                 ?>
             </div>
         </section>
+
         <!-- QUESTION 2 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
@@ -66,11 +69,11 @@ $secondStudent->setAge($secondStudent->calculateAge());
             </p>
             <div class="exercice-sandbox">
                 <?php
+                $student1->setLevel('CM1');
+                var_dump($student1->getLevel());
 
-                echo '<p>' . $firstStudent->getFirstName() . ' ' . $firstStudent->getLastName()
-                    . ' est en classe de ' . $firstStudent->getLevel() . '.</p>';
-                echo '<p>' . $secondStudent->getFirstName() . ' ' . $secondStudent->getLastName()
-                    . ' est en classe de ' . $secondStudent->getLevel() . '.</p>';
+                $student2->setLevel('CE1');
+                var_dump($student2->getLevel());
                 ?>
             </div>
         </section>
@@ -84,12 +87,9 @@ $secondStudent->setAge($secondStudent->calculateAge());
                 Mettez à jour l'instanciation des 2 élèves et afficher leur date de naissance.
             </p>
             <div class="exercice-sandbox">
-            <?php
-                echo '<p>' . $firstStudent->getFirstName() . ' ' . $firstStudent->getLastName() . ', date de naissance: '
-                    . $firstStudent->getBirthdate() . '</p>';
-
-                echo '<p>' . $secondStudent->getFirstName() . ' ' . $secondStudent->getLastName() . ', date de naissance: '
-                    . $secondStudent->getBirthdate() . '</p>';
+                <?php
+                echo $student1->getLastname() . " " . $student1->getBirthDate()->format('Y-m-d') . "<br>";
+                echo  $student2->getLastname() . " " . $student2->getBirthDate()->format('Y-m-d');
                 ?>
             </div>
         </section>
@@ -104,12 +104,10 @@ $secondStudent->setAge($secondStudent->calculateAge());
             </p>
             <div class="exercice-sandbox">
                 <?php
-                echo '<p>' . $firstStudent->getFirstName() . ' ' . $firstStudent->getLastName() . ', Age: '
-                    . $firstStudent->getAge() . '</p>';
-
-                echo '<p>' . $secondStudent->getFirstName() . ' ' . $secondStudent->getLastName() . ', Age: '
-                    . $secondStudent->getAge() . '</p>';
+                echo '<p>J\'ai ' . $student1->getAge() . ' ans. <br>';
+                echo 'J\'ai ' . $student2->getAge() . ' ans.</p>';
                 ?>
+
             </div>
         </section>
 
@@ -122,13 +120,12 @@ $secondStudent->setAge($secondStudent->calculateAge());
                 Ajouter la propriété et ajouter la donnée sur les élèves.
             </p>
             <div class="exercice-sandbox">
-                <?php
-                echo '<p>' . $firstStudent->getFirstName() . ' ' . $firstStudent->getLastName() . ', Ecole: '
-                    . $firstStudent->getSchoolName() . '</p>';
 
-                echo '<p>' . $secondStudent->getFirstName() . ' ' . $secondStudent->getLastName() . ', Ecole: '
-                    . $secondStudent->getSchoolName() . '</p>';
+                <?php
+                echo '<p>L\'élève ' . $student1->getLastname() . ' va à l\'école ' . $student1->getSchool() .'.</p>';
+                echo '<p>L\'élève ' . $student2->getLastname() . ' va à l\'école ' . $student2->getSchool() .'.</p>';
                 ?>
+
             </div>
         </section>
 
@@ -137,17 +134,15 @@ $secondStudent->setAge($secondStudent->calculateAge());
             <h2 class="exercice-ttl">Question 6</h2>
             <p class="exercice-txt">
                 Donner la possibilité aux élèves de se présenter en affichant la phrase suivante :<br>
-                Afficher la phrase de présentation des 2 élèves.
-
+                "Bonjour, je m'appelle XXX XXX, j'ai XX ans et je vais à l'école XXX en class de XXX.".
                 <br>
+                Afficher la phrase de présentation des 2 élèves.
             </p>
             <div class="exercice-sandbox">
-            <?php
-                echo '<p> Bonjour, je m\'appelle ' . $firstStudent->getFirstName() . ' ' . $firstStudent->getLastName() . ', j\'ai '
-                . $firstStudent->getAge() . ' ans, et je vais à l\'école ' . $firstStudent->getSchoolName(). ' en class de ' . $firstStudent->getLevel() . '.</p>';
-
-                echo '<p> Bonjour, je m\'appelle ' . $secondStudent->getFirstName() . ' ' . $secondStudent->getLastName() . ', j\'ai '
-                . $secondStudent->getAge() . ' ans, et je vais à l\'école ' . $secondStudent->getSchoolName(). ' en class de ' . $secondStudent->getLevel() . '.</p>';
+                <?php
+                    echo 
+                    '<p>' . $student1->introduceMySelf() . '</p>' . 
+                    '<p>' . $student2->introduceMySelf() . '</p>'
                 ?>
             </div>
         </section>
