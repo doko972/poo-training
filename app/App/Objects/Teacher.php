@@ -3,11 +3,10 @@ namespace App\Objects;
 
 spl_autoload_register();
 
-use App\Objects\Person;
-
 class Teacher extends Person
 {
     private array $discipline;
+    private string $school;
 
     /**
      * Create a new teacher
@@ -19,11 +18,11 @@ class Teacher extends Person
      */
     public function __construct(string $firstname, string $lastname, array $discipline = [], string $school = '')
     {
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
+        parent::__construct($lastname, $firstname);
         $this->discipline = $discipline;
         $this->school = $school;
     }
+
     // -------------------
     // GETTERS AND SETTERS
     // -------------------
@@ -39,13 +38,33 @@ class Teacher extends Person
     /**
      * Set the value of discipline
      *
-     * @return  self
+     * @param array $discipline
+     * @return Teacher
      */
     public function setDiscipline(array $discipline): Teacher
     {
         $this->discipline = $discipline;
-
         return $this;
+    }
+
+    /**
+     * Get the value of school
+     * @return string
+     */
+    public function getSchool(): string
+    {
+        return $this->school;
+    }
+
+    /**
+     * Set the value of school
+     *
+     * @param string $school
+     * @return void
+     */
+    public function setSchool(string $school): void
+    {
+        $this->school = $school;
     }
 
     // -------------------
@@ -53,9 +72,9 @@ class Teacher extends Person
     // -------------------
 
     /**
-     * Add a discipline to a teacher.
+     * Add a discipline to a teacher
      *
-     * @param string $newDiscipline - The name of new discipline.
+     * @param string $newDiscipline
      * @return void
      */
     public function addDiscipline(string $newDiscipline): void
@@ -64,9 +83,9 @@ class Teacher extends Person
     }
 
     /**
-     * Delete an existing discilpline from a teacher or false.
+     * Delete an existing discipline from a teacher
      *
-     * @param string $discipline - The discipline to delete
+     * @param string $discipline
      * @return void
      */
     public function deleteDiscipline(string $discipline): void
@@ -78,9 +97,9 @@ class Teacher extends Person
     }
 
     /**
-     * Get a string of disciplines separated by a coma.
+     * Get a string of disciplines separated by a comma
      *
-     * @return string 
+     * @return string
      */
     public function showDisciplines(): string
     {
@@ -88,13 +107,14 @@ class Teacher extends Person
     }
 
     /**
-     * Introduce my self with a sentence.
+     * Introduce myself with a sentence
      *
      * @return string
      */
-    public function introduceMySelf(): string
+    public function introduceMyself(): string
     {
-        return 'Bonjour, je m\'appelle ' . $this->getLastname() . ' ' . $this->getFirstname()." et j'enseigne à l'école "
-        .$this->getSchool()." les matières suivantes : ".$this->showDisciplines().".";
+        return 'Bonjour, je m\'appelle ' . $this->getLastname() . ' ' . $this->getFirstname() . " et j'enseigne à l'école " 
+        . $this->getSchool() . " les matières suivantes : " . $this->showDisciplines() . ".";
     }
 }
+?>

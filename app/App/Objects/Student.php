@@ -4,14 +4,13 @@ namespace App\Objects;
 
 spl_autoload_register();
 
-use App\Objects\Person;
 use DateTime;
 
 class Student extends Person
 {
     private DateTime $birthDate;
     private string $level;
-    
+    private string $school;
 
     /**
      * Create a new student
@@ -24,8 +23,7 @@ class Student extends Person
      */
     public function __construct(string $lastname, string $firstname, DateTime $birthDate, string $level, string $school)
     {
-        $this->lastname = $lastname;
-        $this->firstname = $firstname;
+        parent::__construct($lastname, $firstname);
         $this->birthDate = $birthDate;
         $this->level = $level;
         $this->school = $school;
@@ -57,8 +55,8 @@ class Student extends Person
     }
 
     /**
-     * Get the value of birthdate
-     * @return DateTime a birthdate
+     * Get the value of birthDate
+     * @return DateTime
      */
     public function getBirthDate(): DateTime
     {
@@ -66,17 +64,35 @@ class Student extends Person
     }
 
     /**
-     * Set the value of birthDate.
-     * 
-     * @param DateTime $birthDate a birthdate.
-     * @return  void
+     * Set the value of birthDate
+     *
+     * @param DateTime $birthDate
+     * @return void
      */
     public function setBirthDate(DateTime $birthDate): void
     {
-
         $this->birthDate = $birthDate;
     }
 
+    /**
+     * Get the value of school
+     * @return string
+     */
+    public function getSchool(): string
+    {
+        return $this->school;
+    }
+
+    /**
+     * Set the value of school
+     *
+     * @param string $school
+     * @return void
+     */
+    public function setSchool(string $school): void
+    {
+        $this->school = $school;
+    }
 
     // -------------------
     // INSTANCE METHODS
@@ -93,14 +109,15 @@ class Student extends Person
     }
 
     /**
-     * Introduce my self with a sentence.
+     * Introduce myself with a sentence
      *
      * @return string
      */
-    public function introduceMySelf(): string
+    public function introduceMyself(): string
     {
         return 'Bonjour, je m\'appelle ' . $this->getLastname() . ' ' . $this->getFirstname() 
-        . ' , j\'ai ' . $this->getAge() . ' ans et je vais à l\'école ' 
-        . $this->getSchool() . ' en class de ' . $this->getLevel() . '.';
+        . ', j\'ai ' . $this->getAge() . ' ans et je vais à l\'école ' 
+        . $this->getSchool() . ' en classe de ' . $this->getLevel() . '.';
     }
 }
+?>
