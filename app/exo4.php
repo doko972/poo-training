@@ -3,7 +3,7 @@ namespace App\Objects;
 
 spl_autoload_register();
 
-use App\Objects\School;
+use App\Objects\Person;
 
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,9 @@ use App\Objects\School;
             </p>
             <div class="exercice-sandbox">
                 <?php
-                 
+                 $school1 = new School('Lycée Laplace', 'Caen');
+                 $School2 = new School('Lycée Jules Vernes', 'Mondeville');
+                 var_dump($school1,$School2);
                 ?>
             </div>
         </section>
@@ -61,7 +63,20 @@ use App\Objects\School;
                 Créer une école de chaque type.
             </p>
             <div class="exercice-sandbox">
+            <?php
+                $primarySchool = new PrimarySchool("Ecole Jules Verne", "Paris");
+                $college = new College("Collège Jean Moulin", "Marseille");
+                $lycee = new Lycee("Lycée Henri IV", "Toulouse");
 
+                echo "<p>École primaire : " . $primarySchool->getName() . " à " . $primarySchool->getCity() . "</p>";
+                echo "<p>Niveaux : " . implode(", ", $primarySchool->getLevels()) . "</p>";
+
+                echo "<p>Collège : " . $college->getName() . " à " . $college->getCity() . "</p>";
+                echo "<p>Niveaux : " . implode(", ", $college->getLevels()) . "</p>";
+
+                echo "<p>Lycée : " . $lycee->getName() . " à " . $lycee->getCity() . "</p>";
+                echo "<p>Niveaux : " . implode(", ", $lycee->getLevels()) . "</p>";
+                ?>
             </div>
         </section>
 
@@ -70,13 +85,21 @@ use App\Objects\School;
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
             <p class="exercice-txt">
-                Créer une méthode permettant d'interroger un type d'école pour savoir s'il prend en charge un niveu
+                Créer une méthode permettant d'interroger un type d'école pour savoir s'il prend en charge un niveau
                 scolaire.
                 <br>
                 Tester la méthode créée.
             </p>
             <div class="exercice-sandbox">
+            <?php
+                $levelPrimary = "CM2";
+                $levelCollege = "5ème";
+                $levelLycee = "Terminale";
 
+                echo "<p>L'école " . $primarySchool->getName() . " prend en charge le niveau $levelPrimary : " . ($primarySchool->hasLevel($levelPrimary) ? 'Oui' : 'Non') . "</p>";
+                echo "<p>L'école " . $college->getName() . " prend en charge le niveau $levelCollege : " . ($college->hasLevel($levelCollege) ? 'Oui' : 'Non') . "</p>";
+                echo "<p>L'école " . $lycee->getName() . " prend en charge le niveau $levelLycee : " . ($lycee->hasLevel($levelLycee) ? 'Oui' : 'Non') . "</p>";
+                ?>
             </div>
         </section>
 

@@ -70,12 +70,6 @@ class Person
     // -------------------
     // INSTANCE METHODS
     // -------------------
-    public function introduceMyself(): string
-    {
-        $sentence = static::$sentence;
-        $sentence = str_replace('##lastname##', $this->lastname, $sentence);
-        $sentence = str_replace('##firstname##', $this->firstname, $sentence);
-        return $sentence;
-    }
+
 }
 ?>

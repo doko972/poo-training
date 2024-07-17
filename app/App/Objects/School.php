@@ -1,60 +1,42 @@
 <?php
 namespace App\Objects;
 
-spl_autoload_register();
-
-class School extends Person
+class School
 {
-    protected string $school;
+    protected string $name;
     protected string $city;
+    protected array $levels;
 
-    public function __construct(string $lastname, string $firstname, string $school, string $city)
+    public function __construct(string $name, string $city, array $levels = [])
     {
-        parent::__construct($lastname, $firstname);
-        $this->school = $school;
+        $this->name = $name;
         $this->city = $city;
+        $this->levels = $levels;
     }
 
-    // -------------------
-    // GETTERS AND SETTERS
-    // -------------------
-
-    /**
-     * Set the school name
-     *
-     * @param string $school
-     * @return void
-     */
-    public function setSchool(string $school): void
+    public function getName(): string
     {
-        $this->school = $school;
+        return $this->name;
     }
 
-    /**
-     * Get the value of school
-     */
-    public function getSchool(): string
-    {
-        return $this->school;
-    }
-
-    /**
-     * Get the value of city
-     */
     public function getCity(): string
     {
         return $this->city;
     }
 
-    /**
-     * Set the value of city
-     *
-     * @param string $city
-     * @return void
-     */
-    public function setCity(string $city): void
+    public function getLevels(): array
     {
-        $this->city = $city;
+        return $this->levels;
+    }
+
+    public function addLevel(string $level): void
+    {
+        $this->levels[] = $level;
+    }
+
+    public function hasLevel(string $level): bool
+    {
+        return in_array($level, $this->levels);
     }
 }
 ?>
