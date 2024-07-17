@@ -3,7 +3,7 @@ namespace App\Objects;
 
 spl_autoload_register();
 
-use App\Objects\Person;
+use App\Objects\Template;
 
 ?>
 <!DOCTYPE html>
@@ -94,7 +94,7 @@ use App\Objects\Person;
                 <?php
                 $levelPrimary = "CM2";
                 $levelCollege = "5ème";
-                $levelLycee = "Terminale";
+                $levelLycee = "CM2";
 
                 echo "<p>L'école " . $primarySchool->getName() . " prend en charge le niveau $levelPrimary : "
                     . $primarySchool->checkLevel($levelPrimary) . "</p>"
@@ -116,7 +116,7 @@ use App\Objects\Person;
             </p>
             <div class="exercice-sandbox">
                 <?php
-
+                //???
                 ?>
             </div>
         </section>
