@@ -43,9 +43,9 @@ use App\Objects\Person;
             </p>
             <div class="exercice-sandbox">
                 <?php
-                 $school1 = new School('Lycée Laplace', 'Caen');
-                 $School2 = new School('Lycée Jules Vernes', 'Mondeville');
-                 var_dump($school1,$School2);
+                $school1 = new School('Lycée Laplace', 'Caen');
+                $School2 = new School('Lycée Jules Vernes', 'Mondeville');
+                var_dump($school1, $School2);
                 ?>
             </div>
         </section>
@@ -63,7 +63,7 @@ use App\Objects\Person;
                 Créer une école de chaque type.
             </p>
             <div class="exercice-sandbox">
-            <?php
+                <?php
                 $primarySchool = new PrimarySchool("Ecole Jules Verne", "Paris");
                 $college = new College("Collège Jean Moulin", "Marseille");
                 $lycee = new Lycee("Lycée Henri IV", "Toulouse");
@@ -91,14 +91,14 @@ use App\Objects\Person;
                 Tester la méthode créée.
             </p>
             <div class="exercice-sandbox">
-            <?php
+                <?php
                 $levelPrimary = "CM2";
                 $levelCollege = "5ème";
                 $levelLycee = "Terminale";
 
-                echo "<p>L'école " . $primarySchool->getName() . " prend en charge le niveau $levelPrimary : " . ($primarySchool->hasLevel($levelPrimary) ? 'Oui' : 'Non') . "</p>";
-                echo "<p>L'école " . $college->getName() . " prend en charge le niveau $levelCollege : " . ($college->hasLevel($levelCollege) ? 'Oui' : 'Non') . "</p>";
-                echo "<p>L'école " . $lycee->getName() . " prend en charge le niveau $levelLycee : " . ($lycee->hasLevel($levelLycee) ? 'Oui' : 'Non') . "</p>";
+                echo "<p>L'école " . $primarySchool->getName() . " prend en charge le niveau $levelPrimary : " . $primarySchool->checkLevel($levelPrimary) . "</p>";
+                echo "<p>L'école " . $college->getName() . " prend en charge le niveau $levelCollege : " . $college->checkLevel($levelCollege) . "</p>";
+                echo "<p>L'école " . $lycee->getName() . " prend en charge le niveau $levelLycee : " . $lycee->checkLevel($levelLycee) . "</p>";
                 ?>
             </div>
         </section>
@@ -112,9 +112,9 @@ use App\Objects\Person;
                 Ajuster le code de toutes les classes afin que tous les exercices précédents fonctionnent à nouveau.
             </p>
             <div class="exercice-sandbox">
-<?php
+                <?php
 
-?>
+                ?>
             </div>
         </section>
     </div>

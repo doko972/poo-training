@@ -38,5 +38,18 @@ class School
     {
         return in_array($level, $this->levels);
     }
+    /**
+     * Boolean to check level
+     * @param string $level 
+     * @return string
+     */
+    public function checkLevel(string $level): string
+    {
+        if ($this->hasLevel($level)) {
+            return 'Oui';
+        } else {
+            return 'Non';
+        }
+    }
 }
 ?>
