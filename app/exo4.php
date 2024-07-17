@@ -96,9 +96,12 @@ use App\Objects\Person;
                 $levelCollege = "5ème";
                 $levelLycee = "Terminale";
 
-                echo "<p>L'école " . $primarySchool->getName() . " prend en charge le niveau $levelPrimary : " . $primarySchool->checkLevel($levelPrimary) . "</p>";
-                echo "<p>L'école " . $college->getName() . " prend en charge le niveau $levelCollege : " . $college->checkLevel($levelCollege) . "</p>";
-                echo "<p>L'école " . $lycee->getName() . " prend en charge le niveau $levelLycee : " . $lycee->checkLevel($levelLycee) . "</p>";
+                echo "<p>L'école " . $primarySchool->getName() . " prend en charge le niveau $levelPrimary : "
+                    . $primarySchool->checkLevel($levelPrimary) . "</p>"
+                    . "<p>L'école " . $college->getName() . " prend en charge le niveau $levelCollege : "
+                    . $college->checkLevel($levelCollege) . "</p>"
+                    . "<p>L'école " . $lycee->getName() . " prend en charge le niveau $levelLycee : "
+                    . $lycee->checkLevel($levelLycee) . "</p>";
                 ?>
             </div>
         </section>
