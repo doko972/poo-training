@@ -112,7 +112,9 @@ use App\Objects\Person;
                 Ajuster le code de toutes les classes afin que tous les exercices précédents fonctionnent à nouveau.
             </p>
             <div class="exercice-sandbox">
+<?php
 
+?>
             </div>
         </section>
     </div>
